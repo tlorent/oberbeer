@@ -104,13 +104,13 @@ class Search extends React.Component {
               onChange={this.handleChange}
               pattern="[0-9]{4}[ -][A-Za-z]{2}|[0-9]{4}[A-Za-z]{2}"
             />
-            {/* <button
+            <button
               className="search__submit-button"
               type="submit"
               onClick={this.handleSubmit}
             >
               Zoek
-            </button> */}
+            </button>
           </form>
           <p className="search__text">
             Na een dag hard werken heb je dat speciaal gebrouwen biertje wel verdiend! 
