@@ -1,0 +1,7 @@
+{
+  "alias": "oberbeer",
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "name": "oberbeer"
+}
