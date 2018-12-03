@@ -11,7 +11,8 @@ class Search extends React.Component {
     breweriesZip: [],
     breweries: [],
     matchedBrewery: [],
-    formValidity: true
+    formValidity: true,
+    isBreweryVisible: true
   }
 
   componentDidMount() {
@@ -77,7 +78,7 @@ class Search extends React.Component {
   }
 
   render() {
-    const { formValidity } = this.state;
+    const { formValidity, isBreweryVisible } = this.state;
     return(
       <React.Fragment>
         <div className="search">
@@ -116,8 +117,7 @@ class Search extends React.Component {
             Maar geen idee naar welke brouwerij je wilt? Of sta je open voor een verrassing? 
             Typ een postcode in en Oberbeer geeft je advies. Geniet van je bier!
           </p>
-        </div>
-        {this.state.matchedBrewery.map(({
+          {isBreweryVisible && this.state.matchedBrewery.map(({
             address,
             city,
             id,
@@ -137,6 +137,7 @@ class Search extends React.Component {
               />
             </div>
           ))}
+        </div>
         <BreweriesOverview
           breweries={this.state.breweries}
         />

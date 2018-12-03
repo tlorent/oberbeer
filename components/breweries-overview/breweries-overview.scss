@@ -1,8 +1,10 @@
 @import '../../styles/main.scss';
 
 .breweries-overview {
+  display: flex;
+  flex-direction: column;
   font-family: $font-primary;
-  margin: 0 auto;
+  margin: 0 auto 10px;
   max-width: 1000px;
   text-align: center;
 
@@ -14,8 +16,8 @@
     font-family: $font-primary;
     font-size: 14px;
     font-weight: 500;
-    margin: 0 5px;
-    min-width: 100px;
+    margin: 0 auto;
+    max-width: 150px;
     padding: 15px;
   }
 

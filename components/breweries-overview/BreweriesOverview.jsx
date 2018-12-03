@@ -45,10 +45,10 @@ class BreweriesOverview extends React.Component {
             <Brewery
               address={address}
               city={city}
+              daysOpen={open}
               img={img}
               name={name}
               zipcode={zipcode}
-              daysOpen={open}
             />
           </section>
         ))}

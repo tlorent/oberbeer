@@ -5,26 +5,98 @@
   border-radius: 4px;
   border: 1px solid #e6eaee;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   font-family: $font-primary;
-  justify-content: space-between;
-  margin: 20px auto;
-  min-height: 82px;
-  padding: 16px 20px;
+  margin: 15px;
   position: relative;
-  max-width: 1000px;
+
+  // @include tablet {
+  //   max-width: 700px;
+  // }
+
+  @include desktop {
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1000px;
+    min-height: 82px;
+    padding: 16px 20px;
+  }
+
+  &__arrow-down {
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    transition: transform .2s ease;
+
+    &--normal {
+      transform: rotate(0deg);
+    }
+
+    &--rotated {
+      transform: rotate(180deg);
+    }
+
+    @include desktop {
+      display: none;
+    }
+  }
+
+  &__details-box {
+    padding: 15px 25px;
+    text-align: left;
+    background-color: #f5f8fa;
+    border: 1px solid #e6eaee;
+    border-left: none;
+    border-right: none;
+    display: block;
+    min-height: 36px;
+    margin-top: 8px;
+
+    @include desktop {
+      display: none;
+    }
+  }
+
+  &__details-text {
+    font-size: 14px;
+    font-weight: 600;
+  }
 
   &__information {
-    display: flex;
+    display: none;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
     min-width: 600px;
+    padding: 10px 25px;
+
+    &--expanded {
+      display: flex;
+    }
+
+    @include tablet {
+      align-items: center;
+      flex-direction: row;
+
+      &--expanded {
+        display: flex;
+      }
+    }
+
+    @include desktop {
+      display: flex;
+      padding: 0;
+    }
   }
 
   &__information-box {
-    margin-right: 30px;
+    margin-bottom: 8px;
     text-align: left;
+
+    @include desktop {
+      margin-bottom: 0;
+    }
 
     &:not(:last-child) {
       margin-right: 10px;
@@ -52,6 +124,11 @@
 
   &__name {
     margin-bottom: 3px;
+    max-width: 130px;
+
+    @include tablet {
+      max-width: 180px;
+    }
   }
 
   &__name,
@@ -70,9 +147,17 @@
   &__profile {
     align-items: center;
     display: flex;
-    justify-content: space-between;
-    margin: 0;
-    padding: 0;
+    padding: 15px;
+
+    @include desktop {
+      padding: 0;
+      justify-content: space-between;
+      margin: 0;
+    }
+  }
+
+  &__profile-box {
+    text-align: left;
   }
 
   &__address-title,
