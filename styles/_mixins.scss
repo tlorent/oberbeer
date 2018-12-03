@@ -1,0 +1,71 @@
+@import "variables";
+
+/* grid */
+@mixin container {
+  display: flex;
+  margin: auto;
+  max-width: $container-xs;
+  padding: 0 $padding;
+  width: 100%;
+
+  @include tablet {
+    max-width: $container-sm;
+  }
+
+  @include desktop {
+    max-width: $container-md;
+  }
+
+  @include desktop-large {
+    max-width: $container-lg;
+  }
+
+  @include desktop-xlarge {
+    max-width: $container-xlg;
+  }
+}
+
+
+/* media queries */
+
+@mixin tablet {
+  @media #{$gt-xs} {
+    @content;
+  }
+}
+
+@mixin tablet-max {
+  @media #{$sm} {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media #{$gt-sm} {
+    @content;
+  }
+}
+
+@mixin desktop-max {
+  @media #{$md} {
+    @content;
+  }
+}
+
+@mixin desktop-large {
+  @media #{$gt-md} {
+    @content;
+  }
+}
+
+@mixin desktop-large-max {
+  @media #{$lg} {
+    @content;
+  }
+}
+
+@mixin desktop-xlarge {
+  @media #{$gt-lg} {
+    @content;
+  }
+}

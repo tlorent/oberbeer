@@ -1,0 +1,86 @@
+@import '../../styles/main.scss';
+
+.brewery {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #e6eaee;
+  display: flex;
+  flex-direction: row;
+  font-family: $font-primary;
+  justify-content: space-between;
+  margin: 20px auto;
+  min-height: 82px;
+  padding: 16px 20px;
+  position: relative;
+  max-width: 1000px;
+
+  &__information {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    min-width: 600px;
+  }
+
+  &__information-box {
+    margin-right: 30px;
+    text-align: left;
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+
+    &--address {
+      min-width: 200px;
+    }
+
+    &--opening {
+      min-width: 250px;
+    }
+
+    &--postcode {
+      max-width: 100px;
+    }
+  }
+
+  &__logo {
+    border-radius: 50%;
+    height: 50px;
+    margin-right: 25px;
+    width: 50px;
+  }
+
+  &__name {
+    margin-bottom: 3px;
+  }
+
+  &__name,
+  &__address,
+  &__postcode,
+  &__opening {
+    color: #354052;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  &__opening {
+    display: inline;
+  }
+
+  &__profile {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__address-title,
+  &__postcode-title,
+  &__opening-title {
+    color: #7f8fa4;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 3px;
+  }
+}

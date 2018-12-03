@@ -1,0 +1,24 @@
+/* fonts */
+$font-primary: "proximanova";
+$font-logo: "district";
+
+/* container sizes */
+$container-xs: 100%;
+$container-sm: 900px;
+$container-md: 1200px;
+$container-lg: 1400px;
+$container-xlg: 1600px;
+
+/* spacing */
+$padding: 20px;
+
+/* media queries */
+$xs: (max-width: 599px);
+$gt-xs: (min-width: 600px);
+$sm: (min-width: 600px) and (max-width: 959px);
+$gt-sm: (min-width: 960px);
+$md: (min-width: 960px) and (max-width: 1279px);
+$gt-md: (min-width: 1280px);
+$lg: (min-width: 1280px) and (max-width: 1919px);
+$gt-lg: (min-width: 1920px);
+$xl: (min-width: 1920px);
