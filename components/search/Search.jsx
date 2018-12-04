@@ -54,7 +54,6 @@ class Search extends React.Component {
 
     // then create a new array with just the matched brewery so you can
     // loop over it and set it in the state.
-    // (otherwise you have an object and you can't use .map on an object)
     const result = breweries.filter((item) => 
       item.address === brewery.address
     )
@@ -96,7 +95,7 @@ class Search extends React.Component {
       <React.Fragment>
         <div className="search">
           <h2 className="search__title">
-            🍻 Bier drinken 🍻
+            🍻 Bier drinken! 🍻
           </h2>
           <h3 className="search__subtitle">
             Vind een brouwerij bij jou in de buurt
