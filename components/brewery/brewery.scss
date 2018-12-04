@@ -6,16 +6,20 @@
   border: 1px solid #e6eaee;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   font-family: $font-primary;
-  margin: 15px;
   position: relative;
+
+  @include tablet {
+    margin: 15px auto;
+  }
 
   @include desktop {
     flex-direction: row;
     justify-content: space-between;
-    max-width: 1000px;
+    max-width: 900px;
     min-height: 82px;
-    padding: 16px 20px;
+    padding: 16px 0;
   }
 
   &__arrow-down {
@@ -39,26 +43,64 @@
     }
   }
 
+  &__beer {  
+    margin-bottom: 4px;
+    margin-right: 4px;
+
+    @include tablet {
+      display: inline-block;
+    }
+
+    @include desktop {
+      display: block;
+    }
+  }
+
+  &__beer-info {
+    font-weight: 400;
+  }
+
   &__city {
     font-size: 14.5px;
   }
-
+  
   &__details-box {
-    padding: 15px 25px;
-    text-align: left;
     background-color: #f5f8fa;
-    border: 1px solid #e6eaee;
     border-left: none;
     border-right: none;
-    display: block;
-    min-height: 36px;
+    border: 1px solid #e6eaee;
     margin-top: 8px;
+    min-height: 36px;
+    padding: 15px 25px;
+    text-align: left;
 
     @include desktop {
       display: none;
     }
   }
 
+  &__beers-box {
+    background-color: #f5f8fa;
+    border-left: none;
+    border-right: none;
+    border: 1px solid #e6eaee;
+    display: none;
+    margin-top: 15px;
+    min-height: 36px;
+    padding: 15px 25px;
+    text-align: left;
+    width: 100%;
+
+    &--expanded {
+      display: block;
+    }
+
+    @include desktop {
+      display: block;
+    }
+  }
+
+  &__beers-text,
   &__details-text {
     font-size: 14px;
     font-weight: 600;
@@ -68,8 +110,7 @@
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    min-width: 600px;
-    padding: 10px 25px;
+    padding: 15px 25px 0;
 
     &--expanded {
       display: flex;
@@ -106,6 +147,14 @@
       min-width: 200px;
     }
 
+    &--beer {
+      order: 2;
+
+      @include desktop {
+        padding: 15px 25px 0;
+      }
+    }
+
     &--opening {
       min-width: 250px;
     }
@@ -118,7 +167,7 @@
   &__logo {
     border-radius: 50%;
     height: 50px;
-    margin-right: 25px;
+    margin: 0 10px;
     width: 50px;
   }
 
@@ -127,14 +176,15 @@
     max-width: 130px;
 
     @include tablet {
-      max-width: 180px;
+      max-width: 250px;
     }
   }
 
-  &__name,
   &__address,
-  &__postcode,
-  &__opening {
+  &__beer,
+  &__name,
+  &__opening, 
+  &__postcode {
     color: #354052;
     font-size: 15px;
     font-weight: 600;
@@ -147,7 +197,7 @@
   &__profile {
     align-items: center;
     display: flex;
-    padding: 15px;
+    padding: 15px 0;
 
     @include desktop {
       padding: 0;
@@ -161,6 +211,7 @@
   }
 
   &__address-title,
+  &__beer-name-title,
   &__postcode-title,
   &__opening-title {
     color: #7f8fa4;

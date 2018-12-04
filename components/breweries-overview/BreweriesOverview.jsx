@@ -6,7 +6,7 @@ import '../breweries-overview/breweries-overview.scss';
 
 class BreweriesOverview extends React.Component {
   state = {
-    isVisible: false
+    isVisible: true
   }
 
   toggleBreweries = () => {
@@ -17,7 +17,7 @@ class BreweriesOverview extends React.Component {
 
   render() {
     const { isVisible } = this.state;
-    const { breweries } = this.props;
+    const { breweries, beersList } = this.props;
     return (
       <div className="breweries-overview">
         <button 
@@ -49,6 +49,7 @@ class BreweriesOverview extends React.Component {
               img={img}
               name={name}
               zipcode={zipcode}
+              beersList={beersList}
             />
           </section>
         ))}

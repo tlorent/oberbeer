@@ -1,8 +1,7 @@
 import React from 'react';
 
-import BreweriesOverview from '../breweries-overview/BreweriesOverview';
 import Brewery from '../brewery/Brewery';
-import { getBreweries } from '../../services/breweries-api';
+import { getBreweries, getBeers } from '../../services/breweries-api';
 import '../search/search.scss';
 
 class Search extends React.Component {
@@ -10,6 +9,8 @@ class Search extends React.Component {
     userZip: '',
     breweriesZip: [],
     breweries: [],
+    beers: [],
+    beersMatch: [],
     matchedBrewery: [],
     formValidity: true,
     isBreweryVisible: true
@@ -31,27 +32,39 @@ class Search extends React.Component {
         breweriesZip: tempBreweryZips
       }));
     });
+
+    getBeers().then((beersList) => {
+      this.setState(({ beers }) => ({
+        beers: beersList
+      }));
+    });
   }
 
   findBrewery = (zip, array) => {
     // loop through the array of zipcodes
     // save the zipcode that matches the user's input
-    let match = array.reduce((prev, curr) => 
-      Math.abs(curr - zip) < Math.abs(prev - zip) ? curr : prev)
+    let match = array.reduce((accumulator, curr) => 
+      Math.abs(curr - zip) < Math.abs(accumulator - zip) ? curr : accumulator)
 
-    const { breweries } = this.state;
+    const { breweries, beers } = this.state;
 
     // first find the matching brewery
-    // then create a new array with just the matched brewery so you can
-    // loop over it and set it in the state.
-    // (otherwise you have an object and you can't use .map on an object)
     const brewery = breweries.find(brewery => 
       brewery.zipcode.substring(0,4) === match)
 
-    const result = breweries.filter((item) => item.address === brewery.address)
+    // then create a new array with just the matched brewery so you can
+    // loop over it and set it in the state.
+    // (otherwise you have an object and you can't use .map on an object)
+    const result = breweries.filter((item) => 
+      item.address === brewery.address
+    )
+
+    // also find the corresponding beers for a brewery
+    const matchingBeers = beers.filter((beer) => beer.brewery === brewery.name)
     
-    this.setState(({ matchedBrewery }) => ({
-      matchedBrewery: result
+    this.setState(({ matchedBrewery, beersMatch }) => ({
+      matchedBrewery: result,
+      beersMatch: matchingBeers
     }))
   };
 
@@ -100,17 +113,11 @@ class Search extends React.Component {
               maxLength="7"
               minLength="6"
               placeholder="Type een postcode, b.v. 1088 AX"
+              title="Voer a.u.b. een geldige postcode in."
               type="text"
               onChange={this.handleChange}
               pattern="[0-9]{4}[ -][A-Za-z]{2}|[0-9]{4}[A-Za-z]{2}"
             />
-            <button
-              className="search__submit-button"
-              type="submit"
-              onClick={this.handleSubmit}
-            >
-              Zoek
-            </button>
           </form>
           <p className="search__text">
             Na een dag hard werken heb je dat speciaal gebrouwen biertje wel verdiend! 
@@ -134,13 +141,11 @@ class Search extends React.Component {
               name={name}
               zipcode={zipcode}
               daysOpen={open}
+              beers={this.state.beersMatch}
               />
             </div>
           ))}
         </div>
-        <BreweriesOverview
-          breweries={this.state.breweries}
-        />
       </React.Fragment>
     )
   }

@@ -22,7 +22,8 @@ class Brewery extends React.Component {
       daysOpen,
       img,
       name,
-      zipcode
+      zipcode,
+      beers
     } = this.props;
     return (
       <div className="brewery">
@@ -43,10 +44,10 @@ class Brewery extends React.Component {
         </div>
         {isDetailVisible && (
           <div className="brewery__details-box">
-          <p className="brewery__details-text">
-            Meer informatie over deze 🍺 brouwerij
-          </p>
-        </div>
+            <p className="brewery__details-text">
+              {`Meer informatie over ${name} 🍻`}
+            </p>
+          </div>
         )}
         <div className={`
           brewery__information
@@ -96,6 +97,49 @@ class Brewery extends React.Component {
             ))}
           </div>
         </div>
+        {beers.length > 0 && (
+          <React.Fragment>
+            <div className={`
+              brewery__beers-box
+              brewery__beers-box--${isDetailVisible ? 'expanded' : 'normal'}
+            `}
+            >
+              <p className="brewery__beers-text">
+                {`Biertjes van ${name} `}
+                {beers.map(() => (
+                  <span>🍺</span>
+                ))}
+              </p>
+            </div>
+            <div className={`
+              brewery__information
+              brewery__information--${isDetailVisible ? 'expanded' : 'normal'}
+            `}
+            >
+              <div className="
+                brewery__information-box
+                brewery__information-box--beer
+              "
+              >
+                {beers.map(({ 
+                  name:beerName,
+                  alcohol,
+                  style 
+                  }, index) => (
+                  <p 
+                    className="brewery__beer"
+                    key={index}
+                  >
+                    {`${beerName}: `}
+                    <span className="brewery__beer-info">
+                        {`${style} (${alcohol}%)`} 
+                    </span>
+                  </p>
+                ))}
+              </div>
+            </div>
+          </React.Fragment>
+        )}
         <div
           className={`
             brewery__arrow-down
@@ -120,6 +164,7 @@ Brewery.propTypes = {
   address: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
   daysOpen: PropTypes.arrayOf(PropTypes.string).isRequired,
+  beers: PropTypes.arrayOf(PropTypes.string).isRequired,
   img: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   zipcode: PropTypes.string.isRequired

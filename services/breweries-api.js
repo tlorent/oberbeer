@@ -1,5 +1,7 @@
-// api-endpoint
-const api = 'https://my-json-server.typicode.com/tlorent/oberbeer/breweries';
+const api = 'https://my-json-server.typicode.com/tlorent/oberbeer';
 
-export const getBreweries = () => fetch(api)
+export const getBreweries = () => fetch(`${api}/breweries`)
+  .then((response) => response.json());
+
+export const getBeers = () => fetch(`${api}/beers`)
   .then((response) => response.json());
