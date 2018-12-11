@@ -28,7 +28,7 @@
     position: absolute;
     right: 30px;
     top: 30px;
-    transition: transform .2s ease;
+    transition: transform 0.2s ease;
 
     &--normal {
       transform: rotate(0deg);
@@ -43,7 +43,7 @@
     }
   }
 
-  &__beer {  
+  &__beer {
     margin-bottom: 4px;
     margin-right: 4px;
 
@@ -63,7 +63,7 @@
   &__city {
     font-size: 14.5px;
   }
-  
+
   &__details-box {
     background-color: #f5f8fa;
     border-left: none;
@@ -183,7 +183,7 @@
   &__address,
   &__beer,
   &__name,
-  &__opening, 
+  &__opening,
   &__postcode {
     color: #354052;
     font-size: 15px;

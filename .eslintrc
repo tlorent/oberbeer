@@ -2,22 +2,28 @@
   "extends": "airbnb",
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "parser": "babel-eslint",
-  "plugins": ["babel"],
+  "plugins": ["babel", "jest"],
   "root": true,
   "rules": {
+    "no-unused-vars": ["error", { "vars": "local", "args": "none" }],
+    "no-unused-expressions": ["error", { "allowTernary": true }],
     "comma-dangle": ["error", "never"],
     "arrow-parens": ["error", "always"],
     "react/destructuring-assignment": "off",
     "jsx-a11y/anchor-is-valid": "off",
-    "jsx-a11y/label-has-for": ["off", {
-      "components": ["Label"],
-      "required": {
-        "every": ["nesting", "id"]
-      },
-      "allowChildren": false
-    }]
+    "jsx-a11y/label-has-for": [
+      "off",
+      {
+        "components": ["Label"],
+        "required": {
+          "every": ["nesting", "id"]
+        },
+        "allowChildren": false
+      }
+    ]
   }
 }

@@ -5,8 +5,8 @@ import Search from '../components/search/Search';
 
 const Index = () => (
   <React.Fragment>
-    <Header/>
-    <Search/>
+    <Header />
+    <Search />
   </React.Fragment>
 );
 
